@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        
+        student = function(name ,kor, eng, math){
+            av = (kor + eng + math)/3
+            if(av >= 90){
+                console.log(name+"의 학점은 A")
+            } else if (av >=80){
+                console.log(name+"의 학점은 B")
+            } else if (av >=70){
+                console.log(name+"의 학점은 C")
+            } else if (av >=60){
+                console.log(name+"의 학점은 D")
+            } else {
+                console.log(name+"의 학점은 F")
+            }
+        }
+        student("홍길동", 90, 70, 60);
+        
+        $(function(){
+            $("#btn1").click(function(){
+                $("#box1").css("background", "ivory");
+            });
+        });
+
+        $(function(){
+            $("#btn2").click(function(){
+                $("#box1").css("margin-left", "300px");
+            });
+        });
+
+        $(function(){
+            $("#btn3").click(function(){
+                $("#box1").css("display", "none");
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <input type="button" id="btn1" value="버튼1">
+    <input type="button" id="btn2" value="버튼2">
+    <input type="button" id="btn3" value="버튼3">
+    <div id="box1" style="border: 1px solid black; width: 200px; height: 200px;"></div>
+</body>
+</html>

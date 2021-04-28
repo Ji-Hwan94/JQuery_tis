@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Until</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        $(function(){
+            var style_1 = {
+                "background-color":"#0ff",
+                "border":"2px solid #f00"
+            }
+
+            // preUntil과 nextUntil은 둘다 범위 제한 요소를 포함하지 않는다.
+            $(".txt_1").prevUntil(".title").css(style_1);
+
+            $(".txt_2").nextUntil(".txt_2").css(style_1);
+        })
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1 class="title">인접 관계 선택자</h1>
+        <p>내용 1</p>
+        <p>내용 2</p>
+        <p class="txt_1">내용 3</p>
+        <p>내용 4</p>
+        <p class="txt_2">내용 5</p>
+        <p>내용 6</p>
+        <p>내용 7</p>
+    </div>
+</body>
+</html>

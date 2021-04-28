@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        // document를 찾아서 준비되면(ready) 익명함수 실행
+        $(document).ready(function(){
+            var arr = ["영어", "수학", "과학"];
+
+            // each문은 java의 for문 처럼 한 요소씩 순차적으로 꺼낸다.
+            $(arr).each(function(i, o){
+                console.log(i);
+                console.log(o);
+            });
+
+            var arr2 = [
+                {name:"이순신", age:30},
+                {name:"홍길동", age:33},
+                {name:"연산군", age:35}
+            ]
+            $(arr2).each(function(i, o){
+                console.log(i);
+                console.log(o);
+                console.log(o.name);
+                console.log(o.age);
+            });
+
+            var arr3 = [
+                {
+                    name:"이순신",
+                    hobby:["운동", "독서"]
+                },
+                {
+                    name:"홍길동",
+                    hobby:["공부", "게임"]
+                }
+            ]
+            $(arr3).each(function(i, o){
+                console.log(i);
+                console.log(o);
+                console.log(o.name);
+                console.log(o.hobby);
+
+                // 이중배열이 있는 경우, 한 번 더 해준다.
+                $(o.hobby).each(function(i, o){
+                    console.log(i);
+                    console.log(o);
+                });
+            });
+        });        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
