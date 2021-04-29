@@ -10,17 +10,23 @@
         $(function(){
             //scroll 이벤트가 발생할때 익명함수 자동 호출
             $(window).on("scroll", function(){
+
+                // scrollTop은 브라우저의 높이 따라 달라진다.(해상도 등등)
                 var sc_top=$(this).scrollTop();
-                var sc_left=$(this).scrollLeft();
+                console.log("scrollTop : " + sc_top);
 
-                $(".top").text(sc_top);
-                $(".left").text(sc_left);
+                // offset top은 window창의 제일 위에서 부터, 문서가 있는 곳까지의 거리를 구한다.
+                var off_top = $("#box1").offset().top;
+                console.log("offsetTop : " + off_top);
+                
 
-                var sc_top=$(this).offset().top;
-                var sc_left=$(this).offset().left;
+                // scrollTop은 offset에서 현재 보이는 윈도우 창의 크기를 뺀 값이다. / 그래서 scroll event를 사용할 때는, offset을 사용하는 것이 좋다.
+                console.log($("#box1").offset().top - $(window).height());
 
-                $(".top1").text(sc_top1);
-                $(".left1").text(sc_left1);
+                // scroll event를 할 때 사용!!!!!!!!
+                if($(this).scrollTop()>$("box1").offset().top - $(window).height()){
+                    // 애니메이션 동작 코드를 작성
+                }
             });
         });
     </script>
@@ -29,19 +35,12 @@
             height: 10000px;
             width: 5000px;
         }
-        #wrap{
-            position: fixed;
-            left: 10px;
-            top: 10px;
-        }
+        
     </style>
 </head>
 <body>
-    <div id="wrap">
-        <p>scrollTop: <span class="top">0</span></p>
-        <p>scrollLeft: <span class="left">0</span></p>
-        <p>offsetTop: <span class="top1">0</span></p>
-        <p>offsetLeft: <span class="left2">0</span></p>
+    <div id="box1" style="border: 1px solid black; margin-top: 2500px;">
+        box
     </div>
 </body>
 </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        $(function(){
+            var change = $("#box img").attr("src");
+            console.log(change);
+
+            var i = 0;
+
+            var y = $("#pre").click(function(){
+                x = --i;
+                k = x + 5;
+                y = Math.abs(k%5);
+                console.log(y);
+            });
+
+            var z = $("#next").click(function(){
+                j = ++i;
+                z = Math.abs(j%5);
+                console.log(z);
+            });
+            
+            
+
+            $("#next").click(function(){
+                $("#box img").attr({
+                    "src":change.replace("0.png",  z +".png"),
+                    "alt":"그림 " + z
+                });
+            });
+
+            $("#pre").click(function(){
+                $("#box img").attr({
+                    "src":change.replace("0.png",  y +".png"),
+                    "alt":"그림 " + y
+                });
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <input type="button" id="pre" value="이전">
+    <input type="button" id="next" value="다음">
+    <div id="box">
+        <img src="img/0.png" alt="그림 0">
+    </div>
+</body>
+</html>
