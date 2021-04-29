@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        $(function(){
+            //scroll 이벤트가 발생할때 익명함수 자동 호출
+            $(window).on("scroll", function(){
+                var sc_top=$(this).scrollTop();
+                var sc_left=$(this).scrollLeft();
+
+                $(".top").text(sc_top);
+                $(".left").text(sc_left);
+
+                var sc_top=$(this).offset().top;
+                var sc_left=$(this).offset().left;
+
+                $(".top1").text(sc_top1);
+                $(".left1").text(sc_left1);
+            });
+        });
+    </script>
+    <style>
+        body{
+            height: 10000px;
+            width: 5000px;
+        }
+        #wrap{
+            position: fixed;
+            left: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <p>scrollTop: <span class="top">0</span></p>
+        <p>scrollLeft: <span class="left">0</span></p>
+        <p>offsetTop: <span class="top1">0</span></p>
+        <p>offsetLeft: <span class="left2">0</span></p>
+    </div>
+</body>
+</html>
