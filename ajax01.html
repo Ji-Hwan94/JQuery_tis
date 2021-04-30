@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                //  서버 주소
+                url:"js/MOCK_DATA.json",
+                dataType:"json",
+                success: function(data){
+                    console.log(data);
+                    if(data.length>0){
+                        // console.log(data[0].first_name);
+                        // for(var i in data){
+                        //     // console.log(i);
+                        //     console.log(data[i].first_name);
+                        // }
+                        
+                        // data를 불러오는 방법 each / i는 index, o는 가져올 객체(object)
+                        $(data).each(function(i, o){
+                            console.log(o.first_name);
+                        });
+
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

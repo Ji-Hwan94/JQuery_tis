@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <script src="js/jQuery.js"></script>
+    <style>
+        .canvas{
+            position: relative;
+            overflow: hidden;
+            width: 600px;
+            height: 400px;
+        }
+
+        /* 그림 판넬 */
+        .slider_panel{
+            width: 3000px;
+            position: relative;
+        }
+        .image{
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+
+        /* 별 판넬 */
+        .control_panel{
+            position: absolute;
+            bottom: 10px;
+            left: 270px;
+            overflow: hidden;
+            color: white;
+        }
+
+        .dot{
+            font-size: 30px;
+            /* 마우스가 올라가면 마우스 커서 모양이 바뀐다. */
+            cursor: pointer;
+        }
+
+        /* 화살표 판넬 */
+        .pn_panel{
+            position: absolute;
+            width: 600px;
+            bottom: 50%;
+        }
+
+        .pn_panel :hover {
+            color: blue;
+            cursor: pointer;
+        }
+        
+        .pn_panel .right{
+            position: absolute;
+        }
+
+        .pn_panel .left{
+            padding-left: 94%;
+        }
+
+
+
+    </style>
+    <script>
+        $(function(){
+            function moveSlider(index){
+                var move = -(index * 600);
+                $(".slider_panel").animate({ left: move }, "slow");
+            };
+
+            function goNext(index){
+                move =- 600;
+                $(".slider_panel").animate({ left: move}, "slow");
+            };
+
+
+
+        // 별을 누르면 이미지가 움직이게 한다.    
+            $(".dot").click(function(){
+                moveSlider($(this).index());
+            });
+            
+        // 글자를 누르면 다음 페이지로 간다.
+            $(".left").click(function(){
+                
+                $(".slider_panel").animate({ left: "-=600" }, "slow");
+            });
+
+        // 글자를 누르면 이전 페이지로 간다.    
+            // $(".right").on("click", function(){
+            //     $(".slider_panel").animate({ left: "+=600"}, "slow");
+            // });
+        });
+    </script>
+</head>
+<body>
+    <div class="canvas">
+        <div class="slider_panel">
+            <img src="img/pic01.jpg" class="image">
+            <img src="img/pic02.jpg" class="image">
+            <img src="img/pic03.jpg" class="image">
+            <img src="img/pic04.jpg" class="image">
+            <img src="img/pic05.jpg" class="image">
+        </div>
+        <div class="control_panel">
+            <span class="dot">*</span>
+            <span class="dot">*</span>
+            <span class="dot">*</span>
+            <span class="dot">*</span>
+            <span class="dot">*</span>
+        </div>
+        <div class="pn_panel">
+            <span class="right">prev</span>
+            <span class="left">next</span>
+        </div>
+    </div>
+</body>
+</html>
