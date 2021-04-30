@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delegate</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        $(function(){
+            $("#btn1").click(function(){
+                // box1에 버튼을 추가한다.
+                $("#box1").append("<button>버튼</button>")
+            });
+
+            // box1안에 button이 없기 때문에 이 코드는 실행 되지 않는다.
+            //$("#box1 button").click();
+
+            //delegate는 부모에게 지정해줘서, 해당 요소가 발생하면 이벤트가 발생한다.
+            $("#box1").delegate("button", "click", function(){
+                console.log("클릭");
+            });
+
+            //on 함수 사용
+            $("#box1").on("click", "button", function(){
+                console.log("클릭");
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" value="버튼1" id="btn1">
+    <div id="box1" style="border: 1px solid black;"></div>
+</body>
+</html>

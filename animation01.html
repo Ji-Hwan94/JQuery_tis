@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        $(function(){
+            // show
+            $("#btn1").on("click", function(){
+                $("#box1").show();
+            });
+            // hide
+            $("#btn2").on("click", function(){
+                $("#box1").hide();
+            });
+            // show - hide toggle 
+            $("#btn3").on("click", function(){
+                $("#box1").toggle();
+            });
+            // fade in
+            $("#btn4").on("click", function(){
+                $("#box1").fadeIn();
+            });
+            // fade out
+            $("#btn5").on("click", function(){
+                $("#box1").fadeOut();
+            });
+            // fade toggle
+            $("#btn6").on("click", function(){
+                $("#box1").fadeToggle();
+            });
+            // slide up
+            $("#btn7").on("click", function(){
+                $("#box1").slideUp();
+            });
+            // slide down
+            $("#btn8").on("click", function(){
+                $("#box1").slideDown();
+            });
+            //slide toggle
+            $("#btn9").on("click", function(){
+                $("#box1").slideToggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <button type="button" id="btn1">show</button>
+    <button type="button" id="btn2">hide</button>
+    <button type="button" id="btn3">toggle</button>
+    <button type="button" id="btn4">fade in</button>
+    <button type="button" id="btn5">fade out</button>
+    <button type="button" id="btn6">fade toggle</button>
+    <button type="button" id="btn7">slide up</button>
+    <button type="button" id="btn8">slide down</button>
+    <button type="button" id="btn9">slide toggle</button>
+    <div id="box1">box1</div>
+</body>
+</html>

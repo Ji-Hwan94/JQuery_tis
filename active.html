@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active</title>
+    <script src="js/jQuery.js"></script>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>    
+    <script>
+        $(function(){
+            $("#nav a").click(function(){
+                // 초기화를 시켜서 선택된 요소 이외의 요소들의 class를 제거한다.
+                $("#nav a").removeClass("active")
+                
+                // click한 요소를 찾아서, active Class를 붙인다.
+                $(this).addClass("active");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="nav">
+        <a href="#">회사 소개</a>
+        <a href="#">회사 연혁</a>
+        <a href="#">과정 소개</a>
+    </div>    
+</body>
+</html>

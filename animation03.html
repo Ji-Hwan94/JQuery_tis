@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <script src="js/jQuery.js"></script>
+    <script>
+        $(function(){
+
+            // chaining을 통해 순차적으로 animation을 실행 시킬 수 있다.
+            $("#box1").animate({left: "500px"}, 2000)
+                     .animate({top: "500px"}, 2000)
+                     .animate({left: "50px"}, 2000)
+                     .animate({top: "50px"}, 2000);
+
+
+            $("#btn1").click(function(){
+                $("#box1").stop();              // stop을 누르면 현재 진행되는 animantion이 바로 멈추고 다음 animation으로 넘어간다. (.stop(false, false)와 같음)
+            });
+
+            //stop(clearQue, finish)
+            $("#btn2").click(function(){
+                $("#box1").stop(true, true);    // 진행 되었던 animation의 종료 지점으로 간다.
+            });
+
+            // stop(true, false))
+            $("#btn3").click(function(){
+                $("#box1").stop(true, false);   // 버튼을 누른 시점에서 종료 한다.
+            });
+
+            // stop(true, false))
+            $("#btn4").click(function(){
+                $("#box1").stop(false, true);   // 버튼을 누린 animation의 끝 부분으로 간 다음, 다음 animation을 진행한다.
+            });
+
+            $("#btn5").click(function(){
+                $("#box1").clearQueue();       // 현재 진행 중인 animation만 진행된다.
+            });
+        });
+    </script>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            background: aqua;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id="btn1" value="버튼1">
+    <input type="button" id="btn2" value="버튼2">
+    <input type="button" id="btn3" value="버튼3">
+    <input type="button" id="btn4" value="버튼4">
+    <input type="button" id="btn5" value="버튼5">
+    <div id="box1">jQuery</div>   
+
+</body>
+</html>
