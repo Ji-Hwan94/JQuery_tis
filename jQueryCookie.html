@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        $(function(){
+            // popup이라는 쿠키의 값이 none 일때, wrap 박스는 나타나지 않는다.
+            if($.cookie("popup")=="none"){
+                $("#notice_wrap").hide();
+            }
+
+            // 닫기 버튼을 누르면 closePop이라는 함수의 참조값이 closePop을 찾는다.
+            var $expChk = $("#expiresChk");
+            $(".closeBtn").on("click", closePop);
+
+            // 체크박스의 expiresChk를 체크 하는 경우, popup이라는 쿠키의 값이 none이 된다. 쿠키의 유효기간은 3일이다.
+            function closePop(){
+                if($expChk.is(":checked")){
+                    $.cookie("popup", "none", {expires:3, path:"/"});
+                }
+                $("#notice_wrap").fadeOut("fast");
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="notice_wrap">
+        <img src="img/pic1.jpg" alt="공지사항" width="100px">
+        <p class="closeWrap">
+            <input type="checkbox" name="expiresChk" id="expiresChk">
+            <label for="expiresChk">3일 동안 창 열지 않기</label>
+            <button class="closeBtn">닫기</button>
+        </p>
+    </div>
+</body>
+</html>
