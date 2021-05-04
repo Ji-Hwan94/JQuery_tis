@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jQuery.js"></script>
+    <style>
+        li{list-style: none;}
+    </style>
+    <script>
+        function setKeyword(keyword){
+            document.form1.keyword.value=keyword;
+            document.getElementById("txtHint").style.display="none";
+        }
+
+        function showHint(str){
+            console.log(str.length);
+            // 검색어의 길이가 0일때 txtHint가 작동 하지 않게 한다.
+            if(str.length == 0){
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                var output = "<ul>";
+                var keyword;
+                    // json데이터 전용함수       인코딩 할 때 사용(encodeURI)
+                $.getJSON("suggestionJson.php?q=" + encodeURI(str), function(data){
+                    console.log("test");
+                    $.each(data, function(key, value){
+                        keyword = value.keyword;
+                        output += "<li><a href = '#' onClick = 'setKeyword(\"" + keyword + "\")'>" + keyword + "</a></li>";
+                    });
+
+                    output += "</ul>";
+
+                    $("#txtHint").show();
+                    $("#txtHint").html(output);
+                });
+            }
+        }
+
+        $(document).ready(function(){
+            $("#search").keyup(function(){
+                showHint($(this).val());
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <form name="form1">
+        <input type="text" id="search" name="keyword" placeholder="검색어를 입력하세요" onkeyup="showHint(this.value)" autocomplete="off">
+    </form>
+    <div id="txtHint" style="display: none;"></div>
+</body>
+</html>
